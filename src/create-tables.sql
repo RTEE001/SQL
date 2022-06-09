@@ -1,5 +1,11 @@
+drop table if exists Orders;
+drop table if exists Payments;
+drop table if exists Products;
+drop table if exists Employees;
+drop table if exists Customers;
+
 create table Customers(
- CustomerID SERIAL NOT NULL PRIMARY KEY,
+ CustomerID SERIAL PRIMARY KEY,
  Firstname varchar(50) NOT NULL,
  Lastname varchar(50) NOT NULL,
  Gender varchar,
@@ -11,7 +17,7 @@ create table Customers(
 );
 
 create table Employees(
- EmployeeID SERIAL  NOT NULL PRIMARY KEY,
+ EmployeeID SERIAL  PRIMARY KEY,
  Firstname varchar(50) NOT NULL,
  Lastname varchar(50) NOT NULL,
  Email varchar(100),
@@ -19,28 +25,24 @@ create table Employees(
 );
 
 create table Payments(
- CustomerId int NOT NULL,
- FOREIGN KEY (CustomerId) REFERENCES Customers(CustomerID),
- PaymentId SERIAL NOT NULL PRIMARY KEY,
+ CustomerId int REFERENCES Customers(CustomerID),
+ PaymentId SERIAL PRIMARY KEY,
  PaymentDate date NOT NULL,
  Amount decimal
 );
 
 create table Products(
- ProductId SERIAL NOT NULL PRIMARY KEY,
+ ProductId SERIAL PRIMARY KEY,
  ProductName varchar(100),
  Description varchar(300),
  BuyPrice decimal
 );
 
 create table Orders(
- OrderId SERIAL NOT NULL PRIMARY KEY,
- ProductID int NOT NULL,
- PaymentID int NOT NULL,
- FulfilledByEmployeeID int NOT NULL,
- FOREIGN KEY (ProductID) REFERENCES Products(ProductId),
- FOREIGN KEY (PaymentID) REFERENCES Payments(PaymentId),
- FOREIGN KEY (FulfilledByEmployeeID) REFERENCES Employees(EmployeeID),
+ OrderId SERIAL PRIMARY KEY,
+ ProductID int REFERENCES Products(ProductId),
+ PaymentID int REFERENCES Payments(PaymentId),
+ FulfilledByEmployeeID int REFERENCES Employees(EmployeeID),
  DateRequired date NOT NULL,
  DateShipped date,
  Status varchar(20) NOT NULL
