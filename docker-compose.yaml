@@ -3,8 +3,8 @@ services:
   postgres:
     image: postgres:9.6
     environment:
-      - POSTGRES_USER=Thifhidzi
-      - POSTGRES_PASSWORD=docker-postgres-shop_
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
       - POSTGRES_DB=shop
     volumes:
       - ./gitignore/postgresql:/var/lib/postgresql/data
