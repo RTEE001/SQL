@@ -1,1 +1,2 @@
-Create database shop
+drop database if exists shop;
+Create database shop;
