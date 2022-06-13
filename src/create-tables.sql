@@ -1,8 +1,4 @@
-drop table if exists Orders;
-drop table if exists Payments;
-drop table if exists Products;
-drop table if exists Employees;
-drop table if exists Customers;
+drop table if exists Orders, Payments, Products, Employees, Customers;
 
 create table Customers(
  CustomerID SERIAL PRIMARY KEY,
