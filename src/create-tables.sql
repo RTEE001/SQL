@@ -1,4 +1,4 @@
-drop table if exists Orders, Payments, Products, Employees, Customers;
+drop table if exists Orders, Payments, Products, Employees, Customers CASCADE;
 
 create table Customers(
  CustomerID SERIAL PRIMARY KEY,
